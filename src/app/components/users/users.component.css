@@ -1,3 +1,15 @@
+.container{
+}
+
+.padre {
+    height: 150px;
+    /*IMPORTANTE*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
 #listado{
     width: 800px;
 }
