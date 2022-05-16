@@ -1,36 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <a class="navbar-brand" href="#">
-        <img src="../../../assets/img/logo.png"  width="30" height="30" alt=""> Comics Nochistlán
+      <img src="assets/img/logo.png" width="30" height="30" alt=""> Comics Nochistlán
     </a>
-  
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" href="#" [routerLink]="['/home']" >Home</a>
+          <a class="nav-link" href="#" [routerLink]="['/home']">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" href="#" [routerLink]="['/heroes']" >Heroes</a>
+          <a class="nav-link" href="#" [routerLink]="['/heroes']">Heroes</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/about']" >About</a>
+          <a class="nav-link" [routerLink]="['/about']">About</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/users']" >Usuarios</a>
+          <a class="nav-link" [routerLink]="['/users']">Usuarios</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/video']" >Guía</a>
+          <a class="nav-link" [routerLink]="['/video']">Guía</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/download']" >Descargas</a>
+          <a class="nav-link" [routerLink]="['/download']">Descargas</a>
         </li>
       </ul>
-      <div class="form-inline my-2 my-lg-0" >
-          <input type="text" class="form-control mr-sm-2" name="" placeHolder="Buscar Heroe" #buscarTexto (keyup.enter) = "buscarUnHeroe(buscarTexto.value)" id="">
-          <button (click)="buscarUnHeroe(buscarTexto.value)" type="button" class="btn btn-outline-danger my-2 my-sm-0">Buscar</button> 
-       </div>
+
+      <div class="container-lg">
+        <input type="text" class="form-control mr-sm-2" name="" placeHolder="Buscar Heroe" #buscarTexto
+        (keyup.enter)="buscarUnHeroe(buscarTexto.value)" id="">
+      </div>
+        
+      <button (click)="buscarUnHeroe(buscarTexto.value)" type="button"
+        class="btn btn-outline-danger my-2 my-sm-0">Buscar</button>
+
     </div>
-  </nav>
+
+  </div>
+
+</nav>
