@@ -19,6 +19,8 @@ export class UsersComponent implements OnInit {
     sexo: 'x'
   }
 
+  tabla: any;
+
   constructor() {
 
     this.usuarios = localStorage.getItem("usuarios");
@@ -34,6 +36,8 @@ export class UsersComponent implements OnInit {
       'sexo': new FormControl('', [Validators.required, Validators.maxLength(1)]),
     });
 
+    this.lista();
+
   }
 
   
@@ -48,8 +52,6 @@ export class UsersComponent implements OnInit {
         sexo: cad4
       });
 
-    alert(nuevo);
-
     this.usuarios.push(nuevo);
     localStorage.setItem("usuarios", JSON.stringify(this.usuarios));
 
@@ -63,8 +65,50 @@ export class UsersComponent implements OnInit {
     this.añadir(this.forma.value.nombre, this.forma.value.correo, this.forma.value.fecha, this.forma.value.sexo);
   
   }
+
+  lista(){
+
+    var aLength = this.usuarios.length;
+
+    this.tabla = '<thead><tr><th> Nombre </th><th> Correo </th><th> Fecha </th><th> Sexo </th></tr></thead><hr>';
+
+    for(var i in this.usuarios){
+
+        var producto = JSON.parse(this.usuarios[i]);
+
+        this.tabla += '<tbody><tr><td>' + producto.nombre + '</td>';
+        this.tabla += "  ";
+        this.tabla += '<td>' + producto.correo + '</td>';
+        this.tabla += "  ";
+        this.tabla += '<td>' + producto.fecha + '</td>';
+        this.tabla += "  ";
+        this.tabla += '<td>' + producto.sexo + '</td>';
+       // this.tabla += "<td><input type = 'button' value= 'Borrar' onClick= 'borrar('+i+')'></td>";
+        this.tabla += '</tr></tbody><hr>';
+
+    }
+
+    //document.getElementById("listado").innerHTML=tabla;
+    //document.getElementById("total").innerHTML="Total de productos: "+ aLength;
+
+}
+
+  borrar(i: any){
+    const ind = i;
+  var elmn = JSON.parse(this.usuarios[ind]);
+  var nomb = elmn.nombre;
+
+  if(confirm("Deseas borrar el producto: " + nomb + "?")){
+      this.usuarios.splice(ind,1);
+      localStorage.setItem("usuarios",JSON.stringify(this.usuarios));
+  }
+  this.lista();
+}
+
+  //window: any.onload = this.lista;
     
-  todosUsuarios = localStorage.getItem("usuarios");
+
+
 
   /*
 

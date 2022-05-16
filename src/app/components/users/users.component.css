@@ -1,0 +1,10 @@
+#listado{
+    width: 800px;
+}
+ 
+#listado,tr,th,td{
+    border: 1px solid rgb(50, 50, 50);
+    border-collapse: collapse;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
