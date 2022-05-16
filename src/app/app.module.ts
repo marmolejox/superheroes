@@ -15,6 +15,8 @@ import { UnheroeComponent } from './components/unheroe/unheroe.component';
 import { UsersComponent } from './components/users/users.component';
 import { VideoComponent } from './components/video/video.component';
 import { VideoSecurePipe } from './video-secure.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { VideoSecurePipe } from './video-secure.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

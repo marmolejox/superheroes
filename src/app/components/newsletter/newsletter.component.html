@@ -1,58 +1,70 @@
-<img src="../../../assets/img/banner3.jpg" class="img-fluid" alt="Responsive image">
+<img src="assets/img/banner3.jpg" class="img-fluid" alt="Responsive image">
 
 <br>
 
 <br>
 
-<div class="container-sm">
-    <h3><img src="../../../assets/img/nuevo-usuario.png" width="32"><small> Registro de</small> Newsletters.</h3>
-    <hr>
+<br>
 
-    <p><small>Los campos * son obligatorios.</small></p>
-
-    <form>
-        <div class="container">
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nombre (*)</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Nombre" id="nombre" required/>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()" class = "needs-validation">
+    <div class="container">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input class="form-control"type="text" placeholder="Nombre" formControlName="nombre" [ngClass] = "{'is-invalid':!forma.get('nombre')?.valid}">
+                <div *ngIf="forma.controls['nombre'].errors?.['required']" class="invalidfeedback">
+                    El nombre es necesario
                 </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Sexo (*)</label>
-                <div class="col-8">
-
-                    <label><input type="radio" name="sexo" value="hombre" required> Hombre</label><br>
-                    <label><input type="radio" name="sexo" value="mujer"> Mujer</label><br>
-
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nacimiento (*)</label>
-                <div class="col-8">
-                    <input type="date" name="" id="fechaNacimiento" required>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Correo (*)</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Correo electronico" id="correo" required/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-5 col-form-label">&nbsp;</label>
-                <div class="input-group col-md-8">
-                    <button type="button" id="boton" onclick="agregar()" class="btn btn-outline-primary">
-                        Guardar
-                    </button>
+                <div *ngIf="forma.controls['nombre'].errors?.['minlength']" class="invalid-feedback">
+                    Por lo menos tres caracteres
                 </div>
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Correo electronico" [ngClass]="{'is-invalid':!forma.get('correo')?.valid }" formControlName="correo">
+                <div *ngIf="forma.controls['correo'].errors?.['required']" class="invalidfeedback">
+                    Correo obligatorio
+                </div>
+                <div *ngIf="forma.controls['correo'].errors?.['email']" class="invalid-feedback">
+                    El correo no tiene el formato correcto
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+            <div class="col-8">
+                <input class="form-control" type="date" placeholder="(dd/mm/aaaa)" [ngClass]="{'is-invalid':!forma.get('fecha')?.valid }" formControlName="fecha">
+                <div *ngIf="forma.controls['fecha'].errors?.['required']" class="invalidfeedback">
+                    La fecha es necesaria
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Genero</label>
+            <div class="col-8">
+                <input class="form-control" list="sexo" placeholder="(M/F)" [ngClass]="{'is-invalid':!forma.get('sexo')?.valid }" formControlName="sexo">
+                
+                <datalist id="sexo">
+                    <option value="Hombre">
+                    <option value="Mujer">
+                  </datalist>
 
-    </form>
+                <div *ngIf="forma.controls['sexo'].errors?.['required']" class="invalidfeedback">
+                    La sexo es necesario
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button [disabled]="forma.invalid" type="submit" class="btn btn-outline-primary">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
 
-</div>
+<br>
