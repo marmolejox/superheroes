@@ -1,1 +1,14 @@
-<p>search works!</p>
+<div class="container">
+
+    <br>
+
+    <div *ngIf = "indice == -1" class="row animated fadeIn fast">
+        <div class="alert alert-danger text-center">
+            <h2>
+                ¡Lo sentimos, no hemos encontrado resultados de {{nombreh}}! <img src="../../../assets/img/sad.gif" width="180px" alt="" srcset="">
+            </h2>
+        </div>
+    </div>
+    <app-unheroe *ngIf = "indice != -1" [heroe] = 'miheroe'></app-unheroe>
+
+</div>

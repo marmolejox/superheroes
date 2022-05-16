@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HeroeService } from 'src/app/shared/heroe.service';
+import { Heroe } from 'src/app/Heroe';
 
 @Component({
   selector: 'app-unheroe',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnheroeComponent implements OnInit {
 
-  constructor() { }
+  @Input() heroe!: Heroe;
+  constructor(public heroeService: HeroeService, public activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params=>{
+      this.heroe = heroeService.getUnHeroe(params['id']);
+    })
+   }
 
   ngOnInit(): void {
   }
+  
 
 }
