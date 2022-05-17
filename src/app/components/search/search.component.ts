@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
         this.miheroe = this.heroeService.getUnHeroe(this.indice);
       }else{
         window.setTimeout(function() {
-          window.location.href = '/heroes';
+          window.location.href = 'superheroes/heroes';
       }, 15000);
       }
     });
